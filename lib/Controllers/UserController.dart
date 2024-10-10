@@ -11,11 +11,10 @@ class UserController extends AbstractController {
           'Content-Type': 'application/json',
         },
         body: bodyRequest);
-    print(response.statusCode);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       var body = convert.jsonDecode(response.body);
       String accessToken = body['token'];
-      String id = body['data']['id'];
+      String id = body['data']['id'].toString();
       String email = body['data']['email'];
       await secureStorageService.writeKey('accessToken', accessToken);
       await secureStorageService.writeKey('id', id);

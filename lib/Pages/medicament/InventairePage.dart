@@ -16,7 +16,7 @@ class _InventairePageState extends State<InventairePage> {
   List<Medicament> _medicaments = [];
 
   Future<String> getMedicaments() async {
-    _medicaments = _medicamentController.getMedicamentsFixtures();
+    _medicaments = await _medicamentController.getMedicamentsByUserId();
     return '';
   }
 

@@ -2,10 +2,10 @@ class Medicament {
   int id; 
   String nom; 
   String description;
-  DateTime date_expiration;
+  String date_expiration;
   int stock_dispo;
   String forme_pharmacotique;
-  double dosage;
+  int dosage;
   bool avecOrdonnance;
   int limite;
 
@@ -22,15 +22,15 @@ class Medicament {
     );
 
   Medicament.fromJson(Map tab) :
-    id = tab['id'],
+    id =  int.parse(tab['id'].toString()),
     nom = tab['nom'],
     description = tab['description'],
-    date_expiration = tab['date_expiration'],
-    stock_dispo = tab['stock_dispo'],
+    date_expiration = tab['date_expiration'].toString(),
+    stock_dispo =  int.parse(tab['id'].toString()),
     forme_pharmacotique = tab['forme_pharmacotique'],
-    dosage = tab['dosage'],
-    avecOrdonnance = tab['avecOrdonnance'],
-    limite = tab['limite'];
+    dosage =  int.parse(tab['id'].toString()),
+    avecOrdonnance = bool.parse(tab['avecOrdonnance'].toString()),
+    limite =  int.parse(tab['id'].toString());
 
     void minusStock(){
       stock_dispo--;

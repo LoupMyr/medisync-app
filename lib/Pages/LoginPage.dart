@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   void sendRequest() async {
     if (_email.isNotEmpty && _password.isNotEmpty) {
       int responseCode = await userController.authUser(_email, _password);
-      if (responseCode == 200) {
+      if (responseCode == 201) {
         SnackbarComponent.build('Bienvenue', context);
         Navigator.pushReplacement(
             context,

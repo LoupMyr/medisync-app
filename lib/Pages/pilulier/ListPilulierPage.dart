@@ -1,3 +1,4 @@
+import 'package:app/Controllers/PilulierController.dart';
 import 'package:app/Models/Pilulier.dart';
 import 'package:app/Pages/pilulier/DetailsPilulierPage.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,14 @@ class ListPilulierPage extends StatefulWidget {
 }
 
 class _ListPilulierPageState extends State<ListPilulierPage> {
-
   List<Pilulier> _piluliers = [];
+  PilulierController _pilulierController = PilulierController();
 
   Future<String> getPiluliers() async {
+    _piluliers = await _pilulierController.getPiluliers();
     return '';
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -35,13 +38,17 @@ class _ListPilulierPageState extends State<ListPilulierPage> {
                             builder: (context) => DetailsPilulierPage(
                                 title: 'MediSync - ${_piluliers[index].nom}',
                                 pilulier: _piluliers[index]))),
-                    child: SizedBox(
-                      height: 100,
-                      width: 200,
+                    child: Container(
+                      height: 50,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 2)),
                       child: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(_piluliers[index].nom),
                               ],
@@ -76,9 +83,8 @@ class _ListPilulierPageState extends State<ListPilulierPage> {
             body: SingleChildScrollView(
               child: Center(
                 child: Column(
-                  children: [
-                    col,
-                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [col],
                 ),
               ),
             ),

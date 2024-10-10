@@ -1,5 +1,7 @@
 import 'package:app/Pages/medicament/AddMedicamentPage.dart';
 import 'package:app/Pages/medicament/InventairePage.dart';
+import 'package:app/Pages/pilulier/AddPipulierPage.dart';
+import 'package:app/Pages/pilulier/ListPilulierPage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,7 +38,23 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (context) => const AddMedicamentPage(
                             title: 'MediSync - Ajouter un médicament'))),
-                child: const Text('Ajouter un médicament'))
+                child: const Text('Ajouter un médicament')),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            ElevatedButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddPilulierPage(
+                            title: 'MediSync - Ajouter un pilulier'))),
+                child: const Text('Ajouter un pilulier')),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            ElevatedButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ListPilulierPage(
+                            title: 'MediSync - Liste des piluliers'))),
+                child: const Text('Liste des piluliers')),
           ],
         ),
       ),

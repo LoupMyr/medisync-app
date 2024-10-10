@@ -20,7 +20,7 @@ class _AddMedicamentPageState extends State<AddMedicamentPage> {
   MedicamentController medicamentController = MedicamentController();
 
   void sendRequest() async {
-    Medicament medicament = new Medicament(0, _mapMedicament['nom'], _mapMedicament['description'], DateTime.parse(dateInput.text), _mapMedicament['stock'], _mapMedicament['forme'], _mapMedicament['dosage'],  checkedValue, _mapMedicament['limite']);
+    Medicament medicament = new Medicament(0, _mapMedicament['nom'], _mapMedicament['description'], dateInput.text, _mapMedicament['stock'], _mapMedicament['forme'], _mapMedicament['dosage'],  checkedValue, _mapMedicament['limite']);
     int statusCode = await medicamentController.postMedicament(medicament);
     if(statusCode == 201){
       SnackbarComponent.build('Médicament ajouté avec succés', context);
