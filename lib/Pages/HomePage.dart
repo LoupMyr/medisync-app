@@ -24,6 +24,15 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Image(
+              image: AssetImage('assets/logo.png'),
+              width: 250,
+            ),
+            const Text(
+              'Votre santé, notre priorité',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             ElevatedButton(
                 onPressed: () => Navigator.push(
                     context,

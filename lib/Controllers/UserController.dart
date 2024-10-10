@@ -24,8 +24,12 @@ class UserController extends AbstractController {
   }
 
   Future<int> registerUser(String email, String password, String pseudo) async {
-    http.Response response = await http.post(Uri.parse('$uri/api/user'),
-        body: {'email': email, 'password': password, 'pseudo': pseudo});
+    http.Response response = await http.post(Uri.parse('$uri/api/users'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: convert.jsonEncode(
+            {'email': email, 'password': password, 'pseudo': pseudo}));
     return response.statusCode;
   }
 }

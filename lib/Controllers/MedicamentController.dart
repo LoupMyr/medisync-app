@@ -23,19 +23,21 @@ class MedicamentController extends AbstractController {
 
   Future<int> postMedicament(Medicament medicament) async {
     String? id = await secureStorageService.readKey('id');
-    http.Response response = await http
-        .post(Uri.parse('$uri/api/medicaments/'), headers: <String, String>{
-      'Content-Type': 'application/json',
-    }, body: {
+    var body = convert.jsonEncode({
       "nom": medicament.nom,
       "dateExpiration": medicament.date_expiration,
       "description": medicament.description,
       "stockDisponible": medicament.stock_dispo,
       "dosage": medicament.dosage,
+      "limite": medicament.limite,
       "forme_pharmacotique": medicament.forme_pharmacotique,
-      "avecOrdonnance": medicament.avecOrdonnance ? 1 : 0,
+      "avecOrdonnance": medicament.avecOrdonnance,
       "userId": id
     });
+    http.Response response = await http
+        .post(Uri.parse('$uri/api/medicaments/'), headers: <String, String>{
+      'Content-Type': 'application/json',
+    }, body: body);
     return response.statusCode;
   }
 }

@@ -29,6 +29,7 @@ class _ListPilulierPageState extends State<ListPilulierPage> {
           if (snapshot.hasData) {
             col = Column(
               children: [
+                const Padding(padding: EdgeInsets.symmetric(vertical: 25)),
                 ...List.generate(
                   _piluliers.length,
                   (index) => InkWell(
@@ -39,8 +40,7 @@ class _ListPilulierPageState extends State<ListPilulierPage> {
                                 title: 'MediSync - ${_piluliers[index].nom}',
                                 pilulier: _piluliers[index]))),
                     child: Container(
-                      height: 50,
-                      width: 100,
+                      padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2)),
                       child: Center(

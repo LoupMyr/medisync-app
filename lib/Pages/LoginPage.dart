@@ -52,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             Form(
               key: _formKey,
               child: Column(children: [
+                const Image(image: AssetImage('assets/logo.png')),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,

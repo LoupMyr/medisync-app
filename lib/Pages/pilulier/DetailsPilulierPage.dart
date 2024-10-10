@@ -106,6 +106,19 @@ class _DetailsPilulierPageState extends State<DetailsPilulierPage> {
         ));
       }
     }
+    result.add(
+      ButtonTheme(
+        minWidth: 10,
+        height: 10,
+        child: ElevatedButton.icon(
+          onPressed: () {},
+          label: const Icon(Icons.add, color: Colors.white),
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(Colors.green),
+          ),
+        ),
+      ),
+    );
     return Column(
       children: result,
     );

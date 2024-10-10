@@ -28,7 +28,9 @@ class _InventairePageState extends State<InventairePage> {
           Column col = Column();
           if (snapshot.hasData) {
             col = Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Padding(padding: EdgeInsets.symmetric(vertical: 25)),
                 ...List.generate(
                   _medicaments.length,
                   (index) => InkWell(
@@ -38,18 +40,23 @@ class _InventairePageState extends State<InventairePage> {
                             builder: (context) => DetailsMedicamentPage(
                                 title: 'MediSync - ${_medicaments[index].nom}',
                                 medicament: _medicaments[index]))),
-                    child: SizedBox(
+                    child: Container(
                       height: 100,
                       width: 200,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black)),
                       child: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(_medicaments[index].nom),
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                     'Quantité: ${_medicaments[index].stock_dispo.toString()}'),
@@ -63,6 +70,9 @@ class _InventairePageState extends State<InventairePage> {
                                           _medicaments[index].minusStock();
                                         }),
                                     icon: const Icon(Icons.remove)),
+                                IconButton(
+                                    onPressed: () => null,
+                                    icon: const Icon(Icons.delete)),
                               ],
                             )
                           ],
@@ -93,13 +103,7 @@ class _InventairePageState extends State<InventairePage> {
                   style: const TextStyle(color: Colors.white)),
             ),
             body: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  children: [
-                    col,
-                  ],
-                ),
-              ),
+              child: Center(child: col),
             ),
           );
         });

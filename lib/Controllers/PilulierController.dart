@@ -27,4 +27,15 @@ class PilulierController extends AbstractController {
     }
     return result;
   }
+
+  Future<int> postPilulier(String nom) async {
+    String? id = await secureStorageService.readKey("id");
+    http.Response response = await http.post(Uri.parse('$uri/api/piluliers'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: convert.jsonEncode({'nom': nom, 'userId': id}));
+
+    return response.statusCode;
+  }
 }
